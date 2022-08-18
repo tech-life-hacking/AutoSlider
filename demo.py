@@ -13,14 +13,12 @@ if __name__ == '__main__':
     state = sliderstate.Context()
     q = queue.Queue()
 
-    token = 'TOKEN'
-    deviceID = 'DEVICEID'
-
     input_pin = PINNUMBER
     btn = sliderstate.getEvent(input_pin, q)
 
     input_pin = PINNUMBER
-    emcbtn = emergencystop.EmergencyStop(input_pin, token, deviceID)
+    relay_pin = PINNUMBER
+    emcbtn = emergencystop.EmergencyStop(input_pin, relay_pin)
 
     th = threading.Thread(target=slidermotor, args=(q, state, ))
     th.start()
