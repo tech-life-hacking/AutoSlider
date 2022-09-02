@@ -15,7 +15,7 @@ class Open(State):
         self.motor = motor.Motor(port_name, 1)
 
     def operate(self):
-        self.motor.rotate(200, 10)
+        self.motor.rotate(-200, 1)
         self.motor.stop()
 
 class Close(State):
@@ -24,7 +24,7 @@ class Close(State):
         self.motor = motor.Motor(port_name, 1)
 
     def operate(self):
-        self.motor.rotate(-200, 10)
+        self.motor.rotate(200, 1)
         self.motor.stop()
 
 class Context:

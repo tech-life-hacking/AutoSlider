@@ -53,16 +53,12 @@ if __name__ == "__main__":
 
         frame, hands = videocap.capture()
 
-        try:
-            # Recognize gestures
-            myhands.run(hands)
-            kind_of_hands = myhands.get_gestures()
-            ges.change_state(kind_of_hands)
-            ges.operate(sld)
-            cv2.putText(frame, kind_of_hands,
-                        (0, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 255), 2)
-        except IndexError:
-            pass
+        # Recognize gestures
+        kind_of_hands = myhands.run(hands)
+        ges.change_state(kind_of_hands)
+        ges.operate(sld)
+        cv2.putText(frame, kind_of_hands,
+                    (0, 100), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 255), 2)
 
         videocap.show(frame)
         key = cv2.waitKey(1)
